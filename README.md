@@ -13,3 +13,8 @@ Capturas de pantalla funcionamiento del sistema.
 Filtros por cualquier campo
 
 ![image](https://user-images.githubusercontent.com/20686080/144721246-bbed5ad0-6501-4e30-b806-1a3abe872fab.png)
+
+
+Filtro por colores para saber si esta vivo o muerto el personaje
+
+![image](https://user-images.githubusercontent.com/20686080/144721288-13938e00-cbb8-4726-902d-a74886dc05b2.png)
