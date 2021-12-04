@@ -1,0 +1,36 @@
+.contenedor-tabla {
+  width: 100% !important;
+    margin-top: 6%;
+    margin-left: 12%;
+}
+
+.globalWrapperModal {
+    max-width: 1490px !important;
+    min-width: 200px !important;
+    width: 95% !important;
+  }
+
+  .has-search .form-control {
+    padding-left: 2.375rem;
+  }
+
+  .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+  }
+
+  .classDead {
+    color: #dc2d22 !important;
+    font-weight: bold;
+  }
+  .classLive {
+    color: #89c53f !important;
+    font-weight: bold;
+  }

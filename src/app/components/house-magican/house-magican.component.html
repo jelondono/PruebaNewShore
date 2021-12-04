@@ -1,0 +1,119 @@
+
+<div class="contenedor-tabla">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-9">
+        <h4>List of houses</h4>
+      </div>
+    <br><br>
+    <div class="row">
+      <div class="form-group has-search col-7 col-md-12">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" [(ngModel)]="filtroHouse" name="filtroHouses"
+          (keyup)="filtrarHouses($event)" class="form-control" placeholder="Buscar" />
+      </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+
+      <table id="mytable" class="table table-bordered table-striped table-responsive">
+
+        <thead>
+
+          <th>HOUSE</th>
+          <th>COUNT MEMBERS</th>
+          <th>VIEW MEMBERS</th>
+        </thead>
+        <tbody>
+
+          <tr
+            *ngFor="let item of (houseList | paginate: { itemsPerPage: 10, currentPage: p }); let posicion = index">
+            <td>{{item.nameHouse}}</td>
+            <td>{{item.countMember}} </td>
+
+            <td> <button type="submit" class="btn btn-sm btn-outline-primary" title="View members"
+              (click)="openModalViewMember(verMiembros,item.nameHouse)"> Ver Miembros
+              <i class="fa fa-eye fa-lg"></i></button></td>
+
+
+          </tr>
+
+        </tbody>
+
+      </table>
+      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"
+      screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Pagina"
+      screenReaderCurrentLabel="Estas en la pagina" responsive></pagination-controls>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para ver listado de miembros -->
+
+<ng-template #verMiembros let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Member List</h4>
+    <div class="col-md-3"></div>
+    <div class="row">
+      <div class="form-group has-search col-7 col-md-12">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" [(ngModel)]="filtroMembers" name="filtroMembers"
+          (keyup)="filtrarMembers($event)" class="form-control" placeholder="Buscar" />
+      </div>
+
+    </div>
+    <button type="button" class="close" aria-label="Close" (click)="cerrarModalGuardar()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <div class="modal-body">
+    <table class="table  table-bordered table-responsive">
+		  <thead>
+		    <tr>
+		      <th scope="col">name</th>
+		      <th scope="col">Image</th>
+		      <th scope="col">Alive</th>
+		      <th scope="col">species</th>
+		      <th scope="col">gender</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr  *ngFor="let item of (membersList | paginate: { itemsPerPage: 5, currentPage: l, id:'modalPaginator' }); let posicion = index;">
+		      <th scope="row">{{item.name}}</th>
+		      <td class="w-25" *ngIf="item.image != ''">
+			      <img src="{{item.image}}" class="img-fluid img-thumbnail" alt="Sheep">
+		      </td>
+          <td class="w-25" *ngIf="!item.image">
+			      <img src="../../../assets/Sample_User_Icon.png" class="img-fluid img-thumbnail" alt="Sheep">
+		      </td>
+
+		      <td  [ngClass]="{'classLive': item.alive === true,
+          'classDead': item.alive === false}" >{{item.alive  == true ? 'Live' : 'Dead' }}</td>
+          <td>{{item.species}}</td>
+          <td>{{item.gender}}</td>
+
+		    </tr>
+
+		  </tbody>
+		</table>
+    <pagination-controls (pageChange)="l = $event" previousLabel="Anterior"  id='modalPaginator' nextLabel="Siguiente"
+    screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Pagina"
+    screenReaderCurrentLabel="Estas en la pagina" responsive></pagination-controls>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="cerrarModalGuardar()">Cerrar</button>
+  </div>
+</ng-template>
+
+<!-- Fin modal -->
+
