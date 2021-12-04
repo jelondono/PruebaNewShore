@@ -20,7 +20,6 @@ export class HouseMagicanComponent implements OnInit {
   membersList: any;
   membersListTemp: any;
   informacionCompletaTemp: any = [];
-  submitted = false;
   modalViewMember;
   filtroHouse;
   filtroMembers;
